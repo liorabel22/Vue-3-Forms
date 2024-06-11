@@ -79,7 +79,17 @@ export default {
   },
   methods: {
     sendFrom() {
-      axios.post();
+      axios
+        .post(
+          "https://my-json-server.typicode.com/liorabel22/Vue-3-Forms/events",
+          this.event
+        )
+        .then((response) => {
+          console.log("Response", response);
+        })
+        .catch((err) => {
+          console.log("Error", err);
+        });
     },
   },
 };
