@@ -10,58 +10,30 @@
 
       <h3>Name & describe your event</h3>
 
-      <BaseInput
-        v-model="event.title"
-        label="Title"
-        type="text"
-      />
+      <BaseInput v-model="event.title" label="Title" type="text" />
 
-      <BaseInput
-        v-model="event.description"
-        label="Description"
-        type="text"
-      />
+      <BaseInput v-model="event.description" label="Description" type="text" />
 
       <h3>Where is your event?</h3>
 
-      <BaseInput
-        v-model="event.location"
-        label="Location"
-        type="text"
-      />
+      <BaseInput v-model="event.location" label="Location" type="text" />
 
       <h3>Are pets allowed?</h3>
       <div>
-        <BaseRadio
+        <BaseRadioGroup
           v-model="event.pets"
-          :value="1"
-          label="Yes"
-          name="pets"
-        />
-      </div>
-
-      <div>
-        <BaseRadio
-          v-model="event.pets"
-          :value="0"
-          label="No"
+          :options="petOptions"
           name="pets"
         />
       </div>
 
       <h3>Extras</h3>
       <div>
-        <BaseCheckbox
-          v-model="event.extras.catering"
-          label="Catering"
-        />
+        <BaseCheckbox v-model="event.extras.catering" label="Catering" />
       </div>
 
       <div>
-        <BaseCheckbox
-          v-model="event.extras.music"
-          label="Live music"
-        />
+        <BaseCheckbox v-model="event.extras.music" label="Live music" />
       </div>
 
       <button type="submit">Submit</button>
@@ -73,29 +45,33 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       categories: [
-        'sustainability',
-        'nature',
-        'animal welfare',
-        'housing',
-        'education',
-        'food',
-        'community'
+        "sustainability",
+        "nature",
+        "animal welfare",
+        "housing",
+        "education",
+        "food",
+        "community",
       ],
       event: {
-        category: '',
-        title: '',
-        description: '',
-        location: '',
+        category: "",
+        title: "",
+        description: "",
+        location: "",
         pets: 1,
         extras: {
           catering: false,
-          music: false
-        }
-      }
-    }
-  }
-}
+          music: false,
+        },
+      },
+      petOptions: [
+        { label: "Yes", value: 1 },
+        { label: "No", value: 0 },
+      ],
+    };
+  },
+};
 </script>
